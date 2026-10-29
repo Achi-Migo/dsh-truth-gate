@@ -1,0 +1,12 @@
+node_modules/
+pytest-of-Administrator/
+*.tgz
+.smoke-*.log
+.env
+.env.*
+*.log
+.DS_Store
+Thumbs.db
+coverage/
+.nyc_output/
+dist-tmp/

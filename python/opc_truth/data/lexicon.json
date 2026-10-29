@@ -1,0 +1,39 @@
+{
+  "_note": "兜底通道词典：只做声明识别，不做裁决。由正文解析出的声明最多判 UNPROVEN，不能判 CONTRADICTED。新增条目须在开发卷上验证，禁止对照留出卷字面调整（TS-09）。",
+  "negation": [
+    "未", "没有", "没", "尚未", "并未", "不能", "无法", "不确定", "待验证", "如果", "若", "是否", "失败", "报错", "不通过",
+    "\\bnot\\b", "n't\\b", "\\bnever\\b", "\\bno\\b", "\\bunable\\b", "\\bcannot\\b", "\\bif\\b", "\\bwhether\\b",
+    "\\bfail(?:s|ed|ing)?\\b", "\\bwould\\b", "\\bshould\\b", "\\bmight\\b"
+  ],
+  "scope_all": ["全部", "所有", "全量", "整套", "\\ball\\b", "\\bentire\\b", "\\bfull\\b", "\\bwhole\\b"],
+  "completion": [
+    "已完成", "完成了", "已全部完成", "搞定", "已修复", "修复了", "已实现", "实现了", "大功告成",
+    "全部就绪", "已落地", "办妥了", "交付就绪", "就绪", "修好", "好了", "落地", "事情办妥",
+    "\\bdone\\b", "\\bcompleted?\\b", "\\bfinished\\b", "\\bfixed\\b", "\\bimplemented\\b",
+    "\\bresolved\\b", "\\ball set\\b", "\\bready to ship\\b", "\\bready\\b", "\\bsorted\\b"
+  ],
+  "claims": [
+    {"type": "tests_pass", "pattern": "测试(?:用例)?(?:已经|已|均|都|全部|全)?(?:通过|跑通|全绿|绿了)"},
+    {"type": "tests_pass", "pattern": "(?:pytest|测试套件|单测|用例)\\S{0,8}?(?:全部|均|都)?(?:通过|全绿|跑通)"},
+    {"type": "tests_pass", "pattern": "\\b(?:tests?|test suite|specs?)\\s+(?:are\\s+|is\\s+|now\\s+|all\\s+)*(?:pass(?:es|ed|ing)?|green)\\b"},
+    {"type": "tests_pass", "pattern": "\\b\\d+\\s+passed\\b"},
+    {"type": "command_succeeded", "subject": "build", "pattern": "(?:构建|编译)(?:已经|已)?(?:成功|通过)"},
+    {"type": "command_succeeded", "subject": "build", "pattern": "\\bbuild\\s+(?:now\\s+)?(?:succeeds|succeeded|passes|passed|is green)\\b"},
+    {"type": "command_succeeded", "subject": "ruff", "pattern": "(?:ruff|lint|静态检查)\\S{0,6}?(?:通过|全绿|clean|passes|passed)"},
+    {"type": "command_succeeded", "subject": "mypy", "pattern": "(?:mypy|类型检查)\\S{0,6}?(?:通过|全绿|clean|passes|passed)"},
+    {"type": "file_created", "pattern": "(?:新建|创建|新增)(?:了)?(?:文件)?\\s*`([^`]+)`"},
+    {"type": "file_created", "pattern": "\\b(?:created|added)\\s+(?:a\\s+new\\s+file\\s+|the\\s+file\\s+|new\\s+file\\s+|file\\s+)?`([^`]+)`"},
+    {"type": "file_modified", "pattern": "(?:修改|改动|更新|编辑)(?:了)?(?:文件)?\\s*`([^`]+)`"},
+    {"type": "file_modified", "pattern": "\\b(?:modified|updated|edited|changed)\\s+(?:the\\s+file\\s+|file\\s+)?`([^`]+)`"},
+    {"type": "file_deleted", "pattern": "(?:删除|删掉|移除)(?:了)?(?:文件)?\\s*`([^`]+)`"},
+    {"type": "file_deleted", "pattern": "\\b(?:deleted|removed)\\s+(?:the\\s+file\\s+|file\\s+)?`([^`]+)`"},
+    {"type": "only_changed", "pattern": "(?:只|仅)(?:修改|改动|改|动|触及)了?\\s*`([^`]+)`"},
+    {"type": "only_changed", "pattern": "\\bonly\\s+(?:changed|modified|touched|edited)\\s+`([^`]+)`"},
+    {"type": "committed", "pattern": "提交(?:为|成|到)?\\s*`?([0-9a-f]{7,40})\\b`?"},
+    {"type": "committed", "pattern": "已(?:经)?提交"},
+    {"type": "committed", "pattern": "\\bcommitted\\s+(?:as|in)\\s+`?([0-9a-f]{7,40})\\b`?"},
+    {"type": "committed", "pattern": "\\b(?:i|we)\\s+(?:have\\s+)?committed\\b"},
+    {"type": "pushed", "pattern": "已(?:经)?推送"},
+    {"type": "pushed", "pattern": "\\bpushed\\s+(?:to|it|the)\\b"}
+  ]
+}

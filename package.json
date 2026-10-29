@@ -1,0 +1,79 @@
+{
+  "name": "@zakza/dsh-truth-gate",
+  "version": "0.1.0",
+  "description": "TruthGate for DeepSeek Harness: verify agent claims against shell/edit receipts. Default shadow mode.",
+  "license": "MIT",
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "homepage": "https://github.com/Achi-Migo/dsh-truth-gate#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Achi-Migo/dsh-truth-gate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Achi-Migo/dsh-truth-gate/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/**/*.js",
+    "lib/**/*.d.ts",
+    "python/**",
+    "cordis.patch.yml",
+    "README.md",
+    "README.zh.md"
+  ],
+  "scripts": {
+    "sync-python": "node scripts/sync-python.mjs",
+    "build": "npm run sync-python && tsc -p tsconfig.json",
+    "pack:local": "npm run build && npm pack",
+    "test": "node --test test/*.test.mjs"
+  },
+  "engines": {
+    "node": ">=20",
+    "dsh": ">=0.2.1-rc.3 <0.3.0-0"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "~4.0.5",
+    "@deepseek-ai/dsh-agent": "0.2.1-rc.4",
+    "@deepseek-ai/dsh-llm": "0.2.1-rc.4",
+    "@deepseek-ai/dsh-session": "0.2.1-rc.4",
+    "@deepseek-ai/dsh-tools": "0.2.1-rc.4",
+    "@deepseek-ai/dsh-working-directory": "0.2.1-rc.4",
+    "@deepseek-ai/schemastery": "~3.18.5"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/dsh-agent": { "optional": true },
+    "@deepseek-ai/dsh-llm": { "optional": true },
+    "@deepseek-ai/dsh-session": { "optional": true },
+    "@deepseek-ai/dsh-tools": { "optional": true },
+    "@deepseek-ai/dsh-working-directory": { "optional": true }
+  },
+  "devDependencies": {
+    "@deepseek-ai/schemastery": "~3.18.5",
+    "@types/node": "^22.10.0",
+    "typescript": "~5.9.0"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "truthgate",
+    "verification",
+    "security"
+  ]
+}

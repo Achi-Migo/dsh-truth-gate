@@ -1,0 +1,8 @@
+- insert:
+    - id: truth-gate
+      name: dsh-truth-gate
+      config:
+        mode: shadow
+        requireProtocol: true
+        loopLimit: 3
+        timeoutMs: 15000

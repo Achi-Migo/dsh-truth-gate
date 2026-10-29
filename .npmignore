@@ -1,0 +1,13 @@
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+src/
+test/
+scripts/
+marketplace/
+pytest-of-Administrator/
+*.tgz
+.smoke-*.log
+tsconfig.json
+.gitignore
+node_modules/
